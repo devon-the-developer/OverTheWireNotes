@@ -106,3 +106,30 @@ strings ./-file0*
 
 **Output:**koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
+## Level 5 -> 6
+The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
+
+human-readable
+1033 bytes in size
+not executable
+
+ls finds a 20 differnet directories.
+Find command? 
+find -readable -size 1033 ! -executable 
+
+Googling brought me to something similar:
+```
+find . -type f -readable -size 1033c ! -executable 
+```
+
+Although it looks like the flag -readable only refers to files that can be read by the account
+
+-size 1033c uses c instead of b for the file size. Apparently b is for 512 byte blocks. c is for actual bytes 
+
+```
+find -size 1033c ! -executable
+```
+
+Found ./maybehere07/.file2
+
+**Output:** DXjZPULLxYr17uwoI01bNLQbtFemEgo7
