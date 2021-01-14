@@ -151,3 +151,17 @@ find / -group bandit6 -user bandit7 -size 33c
 printed out lists of lots of permission denied but can see one file /var/lib/dpkg/info/bandit7.password that looks interesting 
 
 **Output:** HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
+
+## Level 7 -> 8
+
+The password for the next level is stored in the file data.txt next to the word millionth
+
+Lots of text in the file, going to need to sort through with some sort of regex or some other command
+
+[Great regex article](https://www.howtogeek.com/661101/how-to-use-regular-expressions-regexes-on-linux/)
+
+```
+grep -e 'miilionth' data.txt
+```
+
+**Output:** cvX2JJa4CFALtqS87jk27qwqGhBM9plV
