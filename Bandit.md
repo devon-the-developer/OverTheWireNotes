@@ -9,7 +9,6 @@ Add flag -p 0000 with port of desired port
 Ssh bandit0@bandit.labs.overthewire.org -p 2220 
 -ls 
 Cat readme 
-
 ```
 **Output:** boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 
@@ -17,4 +16,14 @@ Cat readme
 Note: Copying text between a guest vm and to a host with virtual box 
 	Devices —> Shared Clipboard
 
+## Level 1
+Login to Bandit1
+
+ctrl + d  - Logs out of ssh
+
+```
+ssh bandit1@bandit.labs.overthewire.org -p 2220
+
+Pass: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
+```
 
