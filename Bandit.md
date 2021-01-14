@@ -165,3 +165,21 @@ grep -e 'miilionth' data.txt
 ```
 
 **Output:** cvX2JJa4CFALtqS87jk27qwqGhBM9plV
+
+## Level 8 -> 9
+
+The password for the next level is stored in the file data.txt and is the only line of text that occurs only once
+
+Thinking that I want to use sort command to get rid of duplicates.
+
+used *sort -u data.txt* and was still left with too many results 
+
+tried *sort -u -i data.txt* and still too many
+
+```
+cat data.txt | sort | uniq -u
+```
+
+**Output:** UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR
+
+Note: uniq -u filters adjacent matching therefore you must sort the input before using it.
