@@ -50,3 +50,17 @@ cat spaces\ in\ this\ filename
 ```
 
 **output:** UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK
+
+## Level 3 -> 4 
+
+The password for the next level is stored in a hidden file in the inhere directory.
+
+```
+cd inhere
+ls -a 
+cat .hidden
+```
+
+**Output:** pIwrPrtPN36QITSp3EQaw936yaFoFgAB
+
+
