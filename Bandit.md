@@ -133,3 +133,21 @@ find -size 1033c ! -executable
 Found ./maybehere07/.file2
 
 **Output:** DXjZPULLxYr17uwoI01bNLQbtFemEgo7
+
+## Level 6 -> 7
+
+The password for the next level is stored somewhere on the server and has all of the following properties:
+
+owned by user bandit7
+owned by group bandit6
+33 bytes in size
+
+Looks like it may be another find command 
+
+```
+find / -group bandit6 -user bandit7 -size 33c
+```
+
+printed out lists of lots of permission denied but can see one file /var/lib/dpkg/info/bandit7.password that looks interesting 
+
+**Output:** HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs
