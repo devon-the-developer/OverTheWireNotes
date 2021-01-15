@@ -30,6 +30,7 @@ Pass: boJ9jbbUNNfktd78OOpsqOltutMc3MY1
 ```
 
 ## Level 1 -> 2 
+
 The password for the next level is stored in a file called - located in the home directory
 
 Need to learn how to open a "-" directory 
@@ -107,6 +108,7 @@ strings ./-file0*
 **Output:**koReBOKuIDDepwhWk7jZC0RTdopnAYKh
 
 ## Level 5 -> 6
+
 The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:
 
 human-readable
@@ -219,3 +221,45 @@ cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
 ```
 
 **Output:** 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
+
+## Level 12 -> 13
+
+The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)
+
+xxd can be use to hexdump and reverse with the flag -r 
+
+```
+strings data.txt | xxd -r | strings
+```
+
+```
+Result:
+	data2.bin
+	BZh91AY&SY
+	{RBp
+	5(3A
+	7{qP
+	3A4$
+	q       \)
+	BB9<s 
+```
+
+While it doesn't look like a password flag is in there the data2.bin makes me sus
+
+Had problem so looked for help. command file gives us some information about the file. *file data.txt* is a gzip conpressesd file. 
+Convert it to .gz
+
+Decompress with *gzip -d data.gz*
+
+It is a bzip2 compressed data so change the file to .bz then use *bzip2 -d data.bz*
+
+In gzip form again. Decrypt again
+Says it is in POSIX tar archive
+*tar -xf data.tar* 
+Gives a data5.bin which is a tar archine 
+Removing it from that gives a bzip2
+Removing that gives a tar
+Removing that gives data8.bin which is a gzip file
+Removing that and checking the file states ASCII text 
+
+**Output:** 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
