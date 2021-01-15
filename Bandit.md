@@ -194,3 +194,16 @@ Used *strings data.txt* to get human-readable strings
 strings data.txt | grep '=' 
 ```
 **Output:** truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk
+
+## Level 10 -> 11
+
+The password for the next level is stored in the file data.txt, which contains base64 encoded data
+
+Linux has the base64 command to encode/decode data nad print to standard output 
+
+```
+cat data.txt | base64 -d 
+```
+
+**Output:** IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
+
