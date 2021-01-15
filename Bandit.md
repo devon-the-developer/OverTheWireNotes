@@ -207,3 +207,15 @@ cat data.txt | base64 -d
 
 **Output:** IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR
 
+## Level 11 -> 12
+
+The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions
+
+Looks like a variatation of a Caesar cipher. 
+Refered to as ROT13 can be deciphered by encrypting again.
+
+```
+cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'
+```
+
+**Output:** 5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu
