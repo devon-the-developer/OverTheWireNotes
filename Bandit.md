@@ -490,3 +490,41 @@ AAhhhh the binary will let me run another command as another user.....
 ```
 
 **Output:** GbKksEFF4yrVs6il55v6gwY5aVje5f0j
+
+## Level 20 -> 21
+
+There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).
+
+NOTE: Try connecting to your own network daemon to see if it works as you think
+
+I'm thinking I just have to give it the old password in the correct port to get sent the next password
+
+nmap localhost returns:
+	PORT      STATE SERVICE
+	22/tcp    open  ssh
+	113/tcp   open  ident
+	30000/tcp open  ndmps
+
+Never seen port 113 before so I give it a google. 
+
+```
+Authentication Service. Used by hosts to acquire info on users engaged in connections (eg: it sends socket info to remote hosts, who then passes back user info – generally data from the /etc/passwd file). Can be used to probe remote passwd file for usernames. Allows you to see what account is running a particular service (eg: ident of a service can tell you if its run by root, etc).
+```
+This may be worth probing
+
+```
+echo 'GbKksEFF4yrVs6il55v6gwY5aVje5f0j' | nc localhost 113
+
+0 , 0 : ERROR : UNKNOWN-ERROR
+```
+
+Ahhhh not exactly what I was after.
+How about the other two? 
+
+```
+echo 'GbKksEFF4yrVs6il55v6gwY5aVje5f0j' | nc localhost 30000
+Wrong! Please enter the correct current password
+
+```
+Wrong? This must be the port but the wrong input.
+Oh no I have to run the binary with the port and password
