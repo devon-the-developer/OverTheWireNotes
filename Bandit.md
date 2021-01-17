@@ -263,3 +263,26 @@ Removing that gives data8.bin which is a gzip file
 Removing that and checking the file states ASCII text 
 
 **Output:** 8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL
+
+## Level 13 -> 14 
+
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on
+
+Have access to the file sshkey.private
+If I go into /etc/bandit_pass I have permission denied if trying to read bandit14. Running file on it tells me it is a regular file, no read permission. 
+
+checking out s_client command
+
+```
+s_client -connect localhost:2220 - key ~/sshkey.private
+```
+
+trying to use an get the message s_client command not found 
+
+```
+ssh -i sshkey.private bandit14@localhost 
+```
+
+After gaining access with this I can go find the password in /etc/bandit_pass/bandit14
+
+**Output:** 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
