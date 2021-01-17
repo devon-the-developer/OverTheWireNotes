@@ -439,3 +439,25 @@ Returns:
 Gets me two different potential passwords 
 
 **Password:** kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+
+## Level 18 -> 19
+The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.
+
+Thinking i need to log back into bandit17 and then check the permissions on bandit18's .bashrc
+
+Where do I find the other users data? 
+
+*/home/bandit18*
+
+Don't have permissions to edit .bashrc
+
+Can i stop that from running when I go to login? 
+
+Tried using *su - bandit18* with no luck 
+
+```
+ssh -t bandit18 'cat readme'
+```
+-t allows for a running of a command before .bashrc is run
+
+**Output:** IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
