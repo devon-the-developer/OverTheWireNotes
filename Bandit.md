@@ -416,3 +416,26 @@ I got a warning that the permissions on bandit17.key is too open
 Succesfully logged in. cat /etc/bandit_pass/bandit17
 
 **Output:** xLYVMN9WE5zQ5vHacb0sZEVqbrp7nBTn
+
+## Level 17 -> 18
+
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new
+
+NOTE: if you have solved this level and see ‘Byebye!’ when trying to log into bandit18, this is related to the next level, bandit19
+
+First thing that came to mind was to pipe both files into the same one and sorting them then using uniq, however I think the diff command may do it quicker
+
+```
+diff passwords.new passwords.old
+
+Returns:
+42c42
+< kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
+---
+> w0Yfolrc5bwjS4qw5mq1nnQi6mF03bii
+
+```
+
+Gets me two different potential passwords 
+
+**Password:** kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd
