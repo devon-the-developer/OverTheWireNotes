@@ -461,3 +461,32 @@ ssh -t bandit18 'cat readme'
 -t allows for a running of a command before .bashrc is run
 
 **Output:** IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x
+
+## Level 19 -> 20
+
+To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.
+
+What is setuid binary? 
+
+Funny looking file in directory. 
+
+*file bandit20-do* tells us : setuid ELF 32-bit LSB executable
+
+To run a binary need to use *./bantit20-do*
+
+Tells me how to run command as another user by putting the users id after the file. ls -la tells us that user is bandit20 (surprise, surprise).
+
+running *./bandit20-do id bandit20 returns: 
+uid=11020(bandit20) gid=11020(bandit20) groups=11020(bandit20)
+
+so im thinking the setuid binary has been used? Checking the /etc/bandit_pass
+
+Can't of as bandit20 permission is denied 
+
+AAhhhh the binary will let me run another command as another user..... 
+
+```
+./bandit20-do cat /etc/bandit_pass/bandit20
+```
+
+**Output:** GbKksEFF4yrVs6il55v6gwY5aVje5f0j
