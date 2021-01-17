@@ -286,3 +286,24 @@ ssh -i sshkey.private bandit14@localhost
 After gaining access with this I can go find the password in /etc/bandit_pass/bandit14
 
 **Output:** 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e
+
+
+## Level 14 -> 15
+
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.
+
+Thinking first off that maybe I can submit the password to -port 30000 using nc.
+
+```
+nc bandit15@localhost -p 30000 < '4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e'
+```
+
+Doesn't like that it isn't a file or directory 
+
+nmap localhost shows that 30000 is open with a service of ndmps
+
+```
+	echo '4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e' | nc localhost 30000
+```
+
+**Output:** BfMYroe26WYalil77FoDi9qh59eK5xNr
