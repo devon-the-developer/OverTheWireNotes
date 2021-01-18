@@ -528,3 +528,43 @@ Wrong! Please enter the correct current password
 ```
 Wrong? This must be the port but the wrong input.
 Oh no I have to run the binary with the port and password
+
+Ran the binary by itself and it gave me the instructions 
+```
+This program will connect to the given port on localhost using TCP. If it receives the correct password from the other side, the next password is transmitted back.
+```
+
+I'm going to scan for some more ports again
+
+```
+nmap localhost -p30001-32000
+
+PORT      STATE SERVICE
+30001/tcp open  pago-services1
+30002/tcp open  pago-services2
+31046/tcp open  echo
+31518/tcp open  ssl/echo
+31691/tcp open  echo
+31790/tcp open  ssl/unknown
+31960/tcp open  echo
+```
+
+Thinking it maybe one of te echo ports as it wants to receieve the correct password back 
+
+So apparently I'm off ... need to use tmux and nc.
+
+So went a learned how to use the basics of tmux 
+
+So using tmux I setup a session and create another pane (C-b %)
+
+setting up a listening port of 25000 in one panel
+
+``` 
+nc -lp 25000
+```
+
+I then switch to the other pane and run the suconnect executable with the port 25000 argument and go back to the other panel and send through the last password.
+
+Viola!! 
+
+**Output:** gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
