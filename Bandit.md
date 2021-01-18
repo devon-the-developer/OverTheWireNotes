@@ -568,3 +568,22 @@ I then switch to the other pane and run the suconnect executable with the port 2
 Viola!! 
 
 **Output:** gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr
+
+## Level 21 -> 22
+
+A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.
+
+listing out all the files in the folders shows some text files and they all point to scripts in */usr/bin/*
+
+One specifically refers to bandit22 so I'll take more of an interest in that one.
+
+```
+cat cronjob_bandit22.sh
+
+#!/bin/bash
+chmod 644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+cat /etc/bandit_pass/bandit22 > /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+
+cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+```
+**Output:** Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI
